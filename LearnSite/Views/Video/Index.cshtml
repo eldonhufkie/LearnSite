@@ -1,0 +1,69 @@
+﻿@model IEnumerable<LearnSite.Models.Section>
+@using Microsoft.AspNetCore.Identity
+@using LearnSite.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "GetActionSection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>GetActionSection</h2>*@
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-8">
+            <h3>@TempData["VideoName"]</h3>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var item in Model)
+        {<div class="embed-responsive embed-responsive-16by9">
+                <iframe id="video" class="embed-responsive-item"
+                        src="https://www.youtube.com/embed/@TempData["VideoUrl"]" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </div>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>Course Sections</h2>
+        <div id="divID" class="accordion">
+            @foreach (var item in Model)
+            {
+                <a class="btn btn-block card" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Section @item.Id
+                </a>
+                <div class="collapse" id="collapseExample">
+                    @foreach (var vids in item.Videos)
+                    {
+                        <div class="card card-body">
+                            @using (Html.BeginForm("GetActionSection", "Video", FormMethod.Post))
+                            {
+                                <input type="hidden" value="@vids.Id" id="@vids.Id" name="id" />
+                                <input type="submit" class="btn btn-block" value="@vids.VideoName" />
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="h1"><small>Video Description</small></div>
+        <p class="h4">@TempData["VideoDescription"]</p>
+    </div>
+</div>
+

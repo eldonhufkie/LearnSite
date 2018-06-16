@@ -1,0 +1,38 @@
+﻿@model IEnumerable<LearnSite.Models.Section>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+
+<div class="row">
+    <div id="divID" class="accordion">
+        @foreach (var item in Model)
+        {
+            <a class="btn btn-block card" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Section @item.Id
+            </a>
+
+            <div class="collapse" id="collapseExample">
+                @foreach (var vids in item.Videos)
+                {
+                    <div class="card card-body">
+                        @using (Html.BeginForm("GetActionSection", "Video", FormMethod.Post))
+                        {
+                            @*<a href="/Section/GetVideo" id="@vids.Id"  class="btn btn-block">@vids.VideoName</a>*@
+                            @*<a href="/Section/GetVideo" id="@vids.Id" class="btn btn-block">@vids.VideoName</a>*@
+                            <input type="hidden" value="@vids.Id" id="@vids.Id" name="id" />
+                            <input type="submit" class="btn btn-block" value="@vids.VideoName" />
+                        }
+                    </div>
+                }
+            </div>
+        }
+
+
+    </div>
+</div>

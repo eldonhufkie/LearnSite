@@ -1,0 +1,71 @@
+﻿@model IEnumerable<LearnSite.Models.Section>
+@using Microsoft.AspNetCore.Identity
+@using LearnSite.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "GetActionSection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>GetActionSection</h2>*@
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-md-8">
+            <h3>@item.Videos.FirstOrDefault().VideoName</h3>
+        </div>
+        }
+    </div>
+<div class="row">
+
+    <div class="col-md-8">
+        @foreach (var item in Model)
+        {
+            <iframe width="600" height="450" id="video"
+                    src="https://www.youtube.com/embed/@item.Videos.FirstOrDefault().VideoUrl"></iframe>
+        }
+
+    </div>
+
+    <div class="col-md-4">
+        <h2>Course Sections</h2>
+        <div id="divID" class="accordion">
+            @foreach (var item in Model)
+            {
+                <a class="btn btn-block card" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Section @item.Id
+                </a>
+                <div class="collapse" id="collapseExample">
+                    @foreach (var vids in item.Videos)
+                    {
+                        <div class="card card-body">
+                            <input type="submit" id="@vids.Id" value="@vids.VideoName" class="btn btn-block" asp-action="GetActionSection" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="h3">Video Description</div>
+    @foreach (var item in Model)
+    {
+        foreach (var vid in item.Videos)
+        {
+            <p>@vid.VideoName</p>
+        }
+    }
+</div>
+<br />
