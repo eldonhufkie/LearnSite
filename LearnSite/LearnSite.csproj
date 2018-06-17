@@ -10,6 +10,10 @@
     <Compile Remove="Migrations\20180528063910_addCourseModel.Designer.cs" />
     <Compile Remove="Migrations\20180531085943_testing.cs" />
     <Compile Remove="Migrations\20180531085943_testing.Designer.cs" />
+    <Compile Remove="Migrations\20180616183851_AddUserProperties.cs" />
+    <Compile Remove="Migrations\20180616183851_AddUserProperties.Designer.cs" />
+    <Compile Remove="Migrations\20180617131945_AddUserProperties.cs" />
+    <Compile Remove="Migrations\20180617131945_AddUserProperties.Designer.cs" />
   </ItemGroup>
 
 

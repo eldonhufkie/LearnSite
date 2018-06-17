@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using LearnSite.Models;
 using LearnSite.Models.AccountViewModels;
 using LearnSite.Services;
+using LearnSite.Context;
+using LearnSite.Ulitity;
 
 namespace LearnSite.Controllers
 {
@@ -22,6 +24,8 @@ namespace LearnSite.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private LearnContext _db;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private RoleManager<IdentityRole> RoleManager;
@@ -29,12 +33,14 @@ namespace LearnSite.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger, RoleManager<IdentityRole> roleManager)
+            ILogger<AccountController> logger, LearnContext db, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _db = db;
+            _roleManager = roleManager;
         }
 
         [TempData]
@@ -220,22 +226,41 @@ namespace LearnSite.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Gender = model.Gender
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    if (!await RoleManager.RoleExistsAsync("Admin"))
+                    if (!await _roleManager.RoleExistsAsync(SD.AdminEndUser))
                     {
-                        var users = new IdentityRole("Admin");
-                        var response = await RoleManager.CreateAsync(users);
-                        if (response.Succeeded)
-                        {
-                            await _userManager.AddToRoleAsync(user, "Admin");
-                            await _signInManager.SignInAsync(user, isPersistent: false);
-                            _logger.LogInformation("User created a new account with password.");
 
-                        }
+                        await _roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
                     }
+                    if (!await _roleManager.RoleExistsAsync(SD.ViewerEndUser))
+                    {
+
+                        await _roleManager.CreateAsync(new IdentityRole(SD.ViewerEndUser));
+
+                    }
+                    if (model.isAdmin)
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.AdminEndUser);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.ViewerEndUser);
+                    }
+
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation("User created a new account with password.");
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
