@@ -21,15 +21,16 @@ namespace LearnSite.Controllers
         // GET: Course
         public async Task<ActionResult> Index()
         {
-            var course = context.Courses.ToListAsync();
+            var courses = context.Courses.ToListAsync();
             
-            return View(await course);
+            return View(await courses);
         }
 
         // GET: Course/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var course = context.Courses.FirstOrDefault(x => x.Id == id);
+            return View(course);
         }
 
         // GET: Course/Create

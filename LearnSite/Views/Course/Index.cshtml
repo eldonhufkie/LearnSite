@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<LearnSite.Models.Course>
 @using Microsoft.AspNetCore.Identity
 @using LearnSite.Models
+@using LearnSite.Ulitity
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -25,10 +26,21 @@
         <div class="card-body">
             <h1 class="card-title "><small>@item.CourseName</small></h1>
             @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
-            @using (Html.BeginForm("Index", "Section", FormMethod.Get))
+            @if (User.IsInRole(SD.ViewerEndUser))
             {
-                <input type="hidden" name="id" value="@item.Id" />
-                <input type="submit" class="btn btn-block" value="Click Here" />
+                @using (Html.BeginForm("Index", "Section", FormMethod.Get))
+                {
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input type="submit" class="btn btn-block" value="Click Here" />
+                }
+            }
+            else
+            {
+                @using (Html.BeginForm("Details", "Course", FormMethod.Get))
+                {
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input type="submit" class="btn btn-block" value="Click Here" />
+                }
             }
         </div>
     </div>

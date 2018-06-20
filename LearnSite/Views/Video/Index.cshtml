@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<LearnSite.Models.Section>
 @using Microsoft.AspNetCore.Identity
 @using LearnSite.Models
+@using LearnSite.Ulitity
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -48,11 +49,13 @@
                     @foreach (var vids in item.Videos)
                     {
                         <div class="card card-body">
+
                             @using (Html.BeginForm("GetActionSection", "Video", FormMethod.Post))
                             {
                                 <input type="hidden" value="@vids.Id" id="@vids.Id" name="id" />
                                 <input type="submit" class="btn btn-block" value="@vids.VideoName" />
                             }
+
                         </div>
                     }
                 </div>

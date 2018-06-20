@@ -9,6 +9,10 @@ namespace LearnSite.Models
     {
         public int Id { get; set; }
         public string CourseName { get; set; }
+        public string CourseBriefDescription { get; set; }
+        public string ThingsYouWillLearn { get; set; }
+        public string CourseDetailedDescription { get; set; }
+        //instructor
         public ICollection<Section> Sections { get; set; }
     }
 }
