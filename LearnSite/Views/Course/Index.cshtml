@@ -26,22 +26,13 @@
         <div class="card-body">
             <h1 class="card-title "><small>@item.CourseName</small></h1>
             @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
-            @if (User.IsInRole(SD.ViewerEndUser))
+            @using (Html.BeginForm("Details", "Course", FormMethod.Get))
             {
-                @using (Html.BeginForm("Index", "Section", FormMethod.Get))
-                {
-                    <input type="hidden" name="id" value="@item.Id" />
-                    <input type="submit" class="btn btn-block" value="Click Here" />
-                }
+                <input type="hidden" name="id" value="@item.Id" />
+                <input type="submit" class="btn btn-block" value="Click Here" />
             }
-            else
-            {
-                @using (Html.BeginForm("Details", "Course", FormMethod.Get))
-                {
-                    <input type="hidden" name="id" value="@item.Id" />
-                    <input type="submit" class="btn btn-block" value="Click Here" />
-                }
-            }
+
+
         </div>
     </div>
 }

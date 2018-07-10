@@ -26,6 +26,14 @@
     margin: 15px;
 }
 
+#Thejumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #eee;
+}
+
 .accordion {
     background-color: #eee;
     color: #444;
@@ -57,6 +65,7 @@
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+
 .resp-container {
     position: relative;
     overflow: hidden;
@@ -65,6 +74,16 @@
 
 .card > a {
     color: black;
+}
+
+/*.card {
+    border: solid #808080;
+}*/
+
+.sticky {
+    margin: 15px;
+    position: sticky !important;
+    top: 50px !important;
 }
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

@@ -12,6 +12,7 @@ using LearnSite.Data;
 using LearnSite.Models;
 using LearnSite.Services;
 using LearnSite.Context;
+using Microsoft.AspNetCore.Http;
 
 namespace LearnSite
 {
@@ -35,6 +36,7 @@ namespace LearnSite
                 .AddDefaultTokenProviders();
 
             // Add application services.
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddDbContext<LearnContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();

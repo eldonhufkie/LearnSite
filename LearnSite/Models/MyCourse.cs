@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace LearnSite.Models
 {
-    public class Course
+    public class MyCourse
     {
         public int Id { get; set; }
-        public string CourseName { get; set; }
-        public string CourseBriefDescription { get; set; }
-        public string ThingsYouWillLearn { get; set; }
-        public string CourseDetailedDescription { get; set; }
         public string UserId { get; set; }
-        //instructor
-        public ICollection<Section> Sections { get; set; }
-
+        public int CourseID { get; set; }
+        public DateTime EnrolledDate { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
-
-
+        [ForeignKey("CourseID")]
+        public virtual Course Courses { get; set; }
     }
 }

@@ -18,10 +18,11 @@ namespace LearnSite.Controllers
         {
             context = _context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             TempData["VideoId"] = null;
-            return View();
+            var model = context.Courses.ToListAsync();
+            return View(await model);
         }
        
         public IActionResult Error()

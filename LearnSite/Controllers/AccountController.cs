@@ -28,7 +28,6 @@ namespace LearnSite.Controllers
         private LearnContext _db;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
-        private RoleManager<IdentityRole> RoleManager;
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,

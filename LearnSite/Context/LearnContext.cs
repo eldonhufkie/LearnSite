@@ -24,5 +24,6 @@ namespace LearnSite.Context
         public DbSet<Video> Videos { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<MyCourse> MyCourses { get; set; }
     }
 }

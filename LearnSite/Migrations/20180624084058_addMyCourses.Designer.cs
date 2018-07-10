@@ -11,9 +11,10 @@ using System;
 namespace LearnSite.Migrations
 {
     [DbContext(typeof(LearnContext))]
-    partial class LearnContextModelSnapshot : ModelSnapshot
+    [Migration("20180624084058_addMyCourses")]
+    partial class addMyCourses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,11 +91,7 @@ namespace LearnSite.Migrations
 
                     b.Property<string>("ThingsYouWillLearn");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Courses");
                 });
@@ -265,16 +262,9 @@ namespace LearnSite.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("LearnSite.Models.Course", b =>
-                {
-                    b.HasOne("LearnSite.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("LearnSite.Models.MyCourse", b =>
                 {
-                    b.HasOne("LearnSite.Models.Course", "Courses")
+                    b.HasOne("LearnSite.Models.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade);
