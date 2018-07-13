@@ -30,14 +30,12 @@ namespace LearnSite.Controllers
         [HttpGet]
         public IActionResult Index(int id,int sectionId)
         {
+            var sections = context.Sections.Include(x => x.Videos).OrderBy(x => x.Id).Where(s => s.Id == sectionId);
             var SecVids = new SectionVideoViewModel
             {
-                Sections = context.Sections.Include(x=>x.Videos).OrderBy(x=>x.Id).Where(s=>s.Id==sectionId),
+                Sections = sections.ToArray(),
                 Videos = context.Videos.FirstOrDefault(v => v.Id == id)
             };
-
-            //var section = context.Sections
-            //    .Include(c => c.Videos);
 
             return View(SecVids);
         }

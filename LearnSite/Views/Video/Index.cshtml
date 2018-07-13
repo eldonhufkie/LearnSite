@@ -21,20 +21,19 @@
 }
 
 <div class="row">
-   
-        <div class="col-md-8">
-            <h3>@Model.Videos.VideoName</h3>
-        </div>
-   
+
+    <div class="col-md-8">
+        <h3>@Model.Videos.VideoName</h3>
+    </div>
+
 </div>
 <div class="row">
     <div class="col-md-8">
-      
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="video" class="embed-responsive-item"
-                            src="https://www.youtube.com/embed/@Model.Videos.VideoUrl" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-                </div>
-     
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="video" class="embed-responsive-item"
+                    src="https://www.youtube.com/embed/@Model.Videos.VideoUrl" gesture="media" allow="encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
     </div>
     <div class="col-md-4">
         <h2>Course Sections</h2>
@@ -47,14 +46,14 @@
                 <div class="collapse" id="collapseExample">
                     @foreach (var vids in item.Videos)
                     {
-                    <div class="card card-body">
-                        @using (Html.BeginForm("Index", "Video", FormMethod.Get))
-                        {
-                            <input type="hidden" value="@vids.Id" id="id" name="id" />
-                            <input type="hidden" value="@item.Id" id="id" name="sectionId" />
-                            <input type="submit" class="btn btn-block" value="@vids.VideoName" />
-                        }
-                    </div>
+                        <div class="card card-body">
+                            @using (Html.BeginForm("Index", "Video", FormMethod.Get))
+                            {
+                                <input type="hidden" value="@vids.Id" id="id" name="id" />
+                                <input type="hidden" value="@item.Id" id="id" name="sectionId" />
+                                <input type="submit" class="btn btn-block" value="@vids.VideoName" />
+                            }
+                        </div>
                     }
                 </div>
             }
@@ -64,9 +63,8 @@
 <div class="row">
     <div class="col-md-8">
         <div class="h1"><small>Video Description</small></div>
-      
-                <p class="h4">@Model.Videos.VideoDescription</p>
-         
+        <p class="h4">@Model.Videos.VideoDescription</p>
+
     </div>
 </div>
 
