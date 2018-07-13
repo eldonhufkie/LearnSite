@@ -20,15 +20,16 @@
             <div class="collapse" id="collapseExample">
                 @foreach (var vids in item.Videos)
                 {
-                    <div class="card card-body">
-                        @using (Html.BeginForm("GetActionSection", "Video", FormMethod.Post))
-                        {
-                            @*<a href="/Section/GetVideo" id="@vids.Id"  class="btn btn-block">@vids.VideoName</a>*@
-                            @*<a href="/Section/GetVideo" id="@vids.Id" class="btn btn-block">@vids.VideoName</a>*@
-                            <input type="hidden" value="@vids.Id" id="@vids.Id" name="id" />
-                            <input type="submit" class="btn btn-block" value="@vids.VideoName" />
-                        }
-                    </div>
+                <div class="card card-body">
+                    @using (Html.BeginForm("Index", "Video", FormMethod.Get))
+                    {
+                        @*<a href="/Section/GetVideo" id="@vids.Id"  class="btn btn-block">@vids.VideoName</a>*@
+                        @*<a href="/Section/GetVideo" id="@vids.Id" class="btn btn-block">@vids.VideoName</a>*@
+                        <input type="hidden" value="@vids.Id" name="id" />
+                        <input type="hidden" value="@item.Id" name="sectionId" />
+                        <input type="submit" class="btn btn-block" value="@vids.VideoName" />
+                    }
+                </div>
                 }
             </div>
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LearnSite.Context;
 using LearnSite.Models;
+using LearnSite.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,12 +20,26 @@ namespace LearnSite.Controllers
             context = _context;
         }
         // GET: Video
-        [HttpGet]
+
         public async Task<IActionResult> Index()
         {
             var section = context.Sections
                 .Include(c => c.Videos);
             return View(await section.ToListAsync());
+        }
+        [HttpGet]
+        public IActionResult Index(int id,int sectionId)
+        {
+            var SecVids = new SectionVideoViewModel
+            {
+                Sections = context.Sections.Include(x=>x.Videos).OrderBy(x=>x.Id).Where(s=>s.Id==sectionId),
+                Videos = context.Videos.FirstOrDefault(v => v.Id == id)
+            };
+
+            //var section = context.Sections
+            //    .Include(c => c.Videos);
+
+            return View(SecVids);
         }
         //Get all Videos
         public IActionResult GetAllVideos()

@@ -1,0 +1,47 @@
+﻿@model LearnSite.Models.Course
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="h3 text-center">Create a new Course</div>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Course Name</label>
+                <input asp-for="CourseName" class="form-control" />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Course Brief Description</label>
+                <input asp-for="CourseBriefDescription" class="form-control" />
+                <span asp-validation-for="CourseBriefDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Things You Will Learn</label>
+                <textarea asp-for="ThingsYouWillLearn" class="form-control" cols="10" rows="4"></textarea>
+                <span asp-validation-for="ThingsYouWillLearn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Course Detailed Description</label>
+                <textarea rows="4" cols="10" asp-for="CourseDetailedDescription" class="form-control"></textarea>
+                <span asp-validation-for="CourseDetailedDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default pull-right" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

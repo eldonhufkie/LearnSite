@@ -44,7 +44,7 @@ namespace LearnSite.Controllers
         }
         //
         // GET: Course/Details/5
-        public async Task<ActionResult> Details(int id)
+        public ActionResult Details(int id)
         {
 
 
@@ -93,6 +93,14 @@ namespace LearnSite.Controllers
             try
             {
                 // TODO: Add insert logic here
+                Course course = new Course();
+                course.CourseName = collection["CourseName"];
+                course.CourseBriefDescription = collection["CourseBriefDescription"];
+                course.CourseDetailedDescription = collection["CourseDetailedDescription"];
+                course.ThingsYouWillLearn = collection["ThingsYouWillLearn"];
+
+                context.Courses.Add(course);
+                context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -136,26 +144,34 @@ namespace LearnSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EnrollCourseP(int id)
         {
-            userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            DateTime date = DateTime.Now;
-            try
+            if (User.Identity.IsAuthenticated)
             {
-                MyCourse myCourse = new MyCourse();
-                myCourse.CourseID = id;
-                myCourse.UserId = userId;
-                myCourse.EnrolledDate = date;
+                userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                // TODO: Add Enroll logic here
+                DateTime date = DateTime.Now;
+                try
+                {
+                    MyCourse myCourse = new MyCourse();
+                    myCourse.CourseID = id;
+                    myCourse.UserId = userId;
+                    myCourse.EnrolledDate = date;
 
-                context.MyCourses.Add(myCourse);
-                context.SaveChangesAsync();
-                return RedirectToAction("Index", "Section");
+                    // TODO: Add Enroll logic here
+
+                    context.MyCourses.Add(myCourse);
+                    context.SaveChangesAsync();
+                    return RedirectToAction("Index", "Section");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Login", "Account");
             }
+
         }
 
         // GET: Course/Delete/5
