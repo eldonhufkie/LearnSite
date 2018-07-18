@@ -28,19 +28,19 @@ namespace LearnSite.Controllers
         }
 
         // GET: Course
-        public async Task<IActionResult> Index(string userId = null)
+        public IActionResult Index(string userId = null)
         {
-            //if (userId == null)
-            //{
-            //    userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //}
-            //var UserCourse = new UserCourseViewModel
-            //{
-            //    Courses= (IEnumerable<Course>)context.Courses.SingleOrDefaultAsync(),
-            //    UserObj = context.Users.FirstOrDefault(u => u.Id == userId)
-            //};
-            var model = context.Courses.ToListAsync();
-            return View(await model);
+            if (userId == null)
+            {
+                userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            var UserCourse = new UserCourseViewModel
+            {
+                Courses = (IEnumerable<Course>)context.Courses.SingleOrDefaultAsync(),
+                UserObj = context.Users.FirstOrDefault(u => u.Id == userId)
+            };
+            var model = UserCourse.Courses;
+            return View(model);
         }
         //
         // GET: Course/Details/5
@@ -78,7 +78,21 @@ namespace LearnSite.Controllers
             }
             return View();
         }
-
+        // GET: Course
+        public async Task<IActionResult> MyCourses(string userId = null)
+        {
+            if (userId == null)
+            {
+                userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            var UserCourse = new UserCourseViewModel
+            {
+                Courses = (IEnumerable<Course>)context.Courses.FirstOrDefault(c=>c.UserId == userId),
+                UserObj = context.Users.FirstOrDefault(u => u.Id == userId)
+            };
+            var model = context.Courses.ToListAsync();
+            return View(await model);
+        }
         // GET: Course/Create
         public ActionResult Create()
         {
