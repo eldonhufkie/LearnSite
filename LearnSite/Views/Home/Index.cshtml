@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LearnSite.Models.Course>
+﻿@model LearnSite.ViewModels.UserCourseViewModel
 @{
     ViewData["Title"] = "Home Page";
 }<br />
@@ -7,8 +7,8 @@
     <section class="box ">
         <div class="content-body">
             <div class="row">
-                <div class="col-md-12">
-                    @foreach (var item in Model)
+                <div class="col-md-4">
+                    @foreach (var item in Model.Courses)
                     {
                         <div class="card" style="width: 25rem;">
                             <div class="img-responsive">

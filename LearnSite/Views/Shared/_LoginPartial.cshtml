@@ -1,6 +1,7 @@
 @using Microsoft.AspNetCore.Identity
 @using LearnSite.Models
-@model IEnumerable<LearnSite.Models.Course>
+@using LearnSite.Ulitity
+@*@model LearnSite.ViewModels.UserCourseViewModel*@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -14,26 +15,33 @@
                             <li><a asp-controller="Course" asp-action="Details">Test</a></li>
                     </ul>
                 </li>*@
-            <li class="dropdown">
+            @*<li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Courses <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Courses)
                     {
                         <li>
                             <a asp-area="" asp-controller="Course" asp-action="Index">@item.CourseName</a>
                         </li>
                     }
                 </ul>
-            </li>
+            </li>*@
 
-            <li><a asp-area="" class="nav-link" asp-controller="Course" asp-action="Create">Create a Course</a></li>
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Account <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                    </li>
+                    @if (User.IsInRole(SD.AdminEndUser))
+                    {
+                        <li><a asp-area="" asp-controller="Course" asp-action="Create">Create New Course</a></li>
+                    }
+                    <li>
                         <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
                     </li>
+
+
                 </ul>
             </li>
         </ul>

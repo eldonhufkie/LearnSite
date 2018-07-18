@@ -41,10 +41,10 @@
         <div id="divID" class="accordion">
             @foreach (var item in Model.Sections)
             {
-                <a class="btn btn-block card" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Section @item.Id
+                <a class="btn btn-block card" data-toggle="collapse" href="#collapseExample_@item.SectionNumber" role="button" aria-expanded="false" aria-controls="collapseExample_@item.SectionNumber">
+                    Section @item.SectionNumber
                 </a>
-                <div class="collapse" id="collapseExample">
+                <div class="collapse" id="collapseExample_@item.SectionNumber">
                     @foreach (var vids in item.Videos)
                     {
                     <div class="card card-body">

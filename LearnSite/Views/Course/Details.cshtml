@@ -1,4 +1,4 @@
-﻿@model LearnSite.Models.Course
+﻿@model LearnSite.ViewModels.UserCourseViewModel
 @using LearnSite.Models
 @using LearnSite.Ulitity
 @{
@@ -6,57 +6,66 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
+@if (Model.Courses.Count() > 0)
+{
 
-<div class="row">
-    <div id="Thejumbotron" class="jumbotron">
-        @*<=========================INSERT IMAGE HERE=====================================>*@
-        <h1 class="text-center">@Model.CourseName</h1>
-        <p class="text-center">@Model.CourseBriefDescription</p>
-    </div>
 
-</div>
-<br />
-<div class="row">
+    <div class="row">
+        <div id="Thejumbotron" class="jumbotron">
+            @*<=========================INSERT IMAGE HERE=====================================>*@
 
-    <div class="card  pull-right" style="width: 25rem;">
-        <div class="img-responsive">
-            <h1 class="card-title text-capitalize text-center"><small>Enroll for this course</small></h1>
-            @using (Html.BeginForm("EnrollCourseP", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <span><input type="submit" class="btn btn-block fixed-top sticky sticky-top" value="Enroll Now" /></span>
-                <input type="hidden" name="applicationUser" value="@User.Claims.FirstOrDefault()" />
-                <input type="hidden" name="Id" value="@Model.Id" />
-            }
         </div>
-        <div class="card-body">
+
+    </div>
+    <br />
+    <div class="row">
+
+        <div class="card  pull-right" style="width: 25rem;">
+            <div class="img-responsive">
+                <h1 class="card-title text-capitalize text-center"><small>Enroll for this course</small></h1>
+                @using (Html.BeginForm("EnrollCourseP", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <span><input type="submit" class="btn btn-block fixed-top sticky sticky-top" value="Enroll Now" /></span>
+                    <input type="hidden" name="applicationUser" value="@User.Claims.FirstOrDefault()" />
+                    <input type="hidden" name="Id" value="@Model.Courses.FirstOrDefault().Id" />
+                }
+            </div>
+            <div class="card-body">
+            </div>
         </div>
+        <div class="col-md-8">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, mauris non congue euismod, purus sapien imperdiet dolor, vel rhoncus mauris magna ornare dui. Curabitur ante odio, suscipit ac tellus quis, placerat convallis quam. Nunc cursus semper tortor varius volutpat. Integer id dignissim quam. Maecenas sit amet neque in tortor laoreet pretium. Nulla hendrerit et elit ut euismod. Sed vitae leo tortor.
+
+                Proin nunc lacus, ultrices eu euismod in, efficitur eget purus. Praesent nec fermentum lacus, a rhoncus est. Pellentesque placerat erat a interdum egestas. Duis eget metus varius, vehicula massa vitae, pellentesque urna. Cras lacinia, ante in interdum iaculis, magna neque feugiat felis, id maximus libero sapien vel lorem. Nam iaculis bibendum lorem, ac ornare lectus dapibus id. Suspendisse at rutrum ligula, nec placerat ligula. Nullam nec lacus erat. Integer et turpis molestie, feugiat orci quis, rhoncus mauris. Maecenas consequat, nunc nec convallis pellentesque, justo sapien maximus orci, ac malesuada lorem arcu in orci. In metus urna, viverra eu tincidunt viverra, consequat in quam. Donec eget lacinia ipsum. Quisque consectetur dignissim libero id rutrum. Aliquam molestie posuere dui, in imperdiet lectus facilisis sit amet. Morbi vitae mattis enim.
+
+                Praesent luctus, velit nec maximus viverra, lacus lacus sagittis mi, at varius lacus diam et magna. Aliquam suscipit elit id purus tempor, sit amet efficitur magna tristique. Morbi molestie magna mauris, vitae ultricies ipsum scelerisque sit amet. Ut pharetra sodales sapien, in mattis mi finibus non. Sed ornare nisl metus. Maecenas luctus lobortis urna ac porttitor. Cras ante ligula, molestie vel sem a, condimentum congue est. In vehicula neque iaculis commodo sollicitudin. Fusce volutpat volutpat diam sed ullamcorper.
+
+            </p>
+            <p>
+                Ut fringilla nisi non libero varius tincidunt. Sed semper neque et metus tincidunt elementum. Duis pharetra ipsum sodales scelerisque fringilla. Donec semper elit vitae elit viverra, sit amet suscipit ex iaculis. Suspendisse mattis bibendum urna, quis bibendum nunc aliquet et. Quisque at enim ac nunc sollicitudin interdum. Nunc in risus ornare, consequat nunc eu, lobortis nunc. Sed dignissim scelerisque tristique. Aliquam iaculis ligula ut quam egestas convallis. Aenean pretium justo et nulla malesuada, id vulputate enim scelerisque.
+
+                Quisque sollicitudin metus et ipsum feugiat pretium. Nulla facilisi. Proin cursus eros a luctus convallis. Curabitur ullamcorper neque a sem scelerisque ornare. Integer vitae semper ex, id consequat neque. Nullam eu nisi eu risus varius hendrerit. Donec metus arcu, ullamcorper eget fringilla porta, rutrum sed sapien. Fusce ornare tempor enim, vel tincidunt tellus lobortis at. Ut hendrerit ex ac ex maximus, nec tristique nunc elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer nec sollicitudin leo. Phasellus quis velit et mi sagittis sollicitudin. Praesent at laoreet odio, vel tristique arcu. Aenean aliquam enim eget nulla vulputate cursus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+                Integer sed interdum dui, ac tincidunt turpis. Morbi semper tellus nec elit vehicula, at bibendum lacus sodales. Phasellus quis lorem sollicitudin, hendrerit turpis at, auctor turpis. Mauris malesuada sem et leo dictum ornare. Nullam eget massa pharetra, scelerisque ligula a, pulvinar nisl. Ut pellentesque egestas velit ut ornare. Phasellus at neque in augue varius tincidunt. Fusce auctor sed nibh eget facilisis. Praesent vestibulum, neque et gravida mollis, turpis felis imperdiet elit, id tempor lacus augue ac sapien. Integer volutpat erat at lectus gravida vulputate.
+
+                Sed facilisis tempor risus, nec posuere dui consectetur quis. Etiam pellentesque dui ac dui feugiat, vitae ullamcorper risus porta. Nam ultricies erat ex, et dapibus nisl maximus nec. Donec tempus dolor eu diam scelerisque, sed gravida justo suscipit. Aliquam arcu ex, interdum eu lectus nec, feugiat volutpat ligula. Phasellus vestibulum semper lacus eget vestibulum. Aenean mollis elit quis malesuada cursus. Pellentesque sagittis mi ac nulla egestas, quis ornare tortor condimentum. Aenean tristique ultrices sem sed dictum. Sed efficitur enim ligula, eget semper quam varius a. Ut pellentesque nisi ante, sed iaculis leo pellentesque eu. Vivamus sed aliquet tellus. Duis fermentum justo gravida, mollis nisi non, imperdiet orci. In at ex leo.
+
+                Nulla consectetur ultricies justo, eu fermentum tortor ultrices id. Morbi luctus sed mauris nec feugiat. Mauris a libero tortor. Fusce tempus maximus tellus, sit amet tincidunt neque suscipit vel. Sed eget laoreet dui. Ut vitae varius lacus, laoreet accumsan neque. Nam et ligula nec velit euismod viverra. Nam a eros arcu. Praesent aliquet turpis scelerisque, posuere mauris a, commodo tortor. Donec vitae tortor vel mauris ultricies congue non non tortor. Mauris porttitor sem id odio imperdiet, non rhoncus sapien tincidunt. Donec molestie tempor faucibus. Aenean porttitor interdum fermentum. Sed mattis mauris ut diam posuere suscipit.
+
+                Suspendisse vitae varius ante. Maecenas sapien orci, porttitor pretium lorem ut, mattis feugiat dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce a elit ut lectus congue molestie. Aenean accumsan, leo sit amet fringilla tincidunt, nulla turpis semper urna, a rhoncus ante lorem quis felis. Donec a quam at ante facilisis bibendum. Duis id lacus sem. Proin non nulla lacus. Morbi sit amet odio dignissim, dictum nulla sit amet, pharetra nibh. Cras finibus laoreet urna, malesuada egestas ipsum malesuada id.
+
+                Integer bibendum convallis felis vitae gravida. Maecenas sagittis rhoncus mauris, et ullamcorper ex venenatis ac. In feugiat erat augue, quis volutpat nulla sagittis vulputate. Phasellus vel ex sed mi auctor mattis eu vel ipsum. Mauris at ante non urna finibus auctor. Duis maximus augue at tellus ultrices, ut commodo ipsum dictum. Suspendisse nec magna vitae nibh lacinia luctus. Aliquam eu tortor ultrices, pellentesque est nec, sodales felis.
+            </p>
+        </div>
+
     </div>
-    <div class="col-md-8">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet, mauris non congue euismod, purus sapien imperdiet dolor, vel rhoncus mauris magna ornare dui. Curabitur ante odio, suscipit ac tellus quis, placerat convallis quam. Nunc cursus semper tortor varius volutpat. Integer id dignissim quam. Maecenas sit amet neque in tortor laoreet pretium. Nulla hendrerit et elit ut euismod. Sed vitae leo tortor.
 
-            Proin nunc lacus, ultrices eu euismod in, efficitur eget purus. Praesent nec fermentum lacus, a rhoncus est. Pellentesque placerat erat a interdum egestas. Duis eget metus varius, vehicula massa vitae, pellentesque urna. Cras lacinia, ante in interdum iaculis, magna neque feugiat felis, id maximus libero sapien vel lorem. Nam iaculis bibendum lorem, ac ornare lectus dapibus id. Suspendisse at rutrum ligula, nec placerat ligula. Nullam nec lacus erat. Integer et turpis molestie, feugiat orci quis, rhoncus mauris. Maecenas consequat, nunc nec convallis pellentesque, justo sapien maximus orci, ac malesuada lorem arcu in orci. In metus urna, viverra eu tincidunt viverra, consequat in quam. Donec eget lacinia ipsum. Quisque consectetur dignissim libero id rutrum. Aliquam molestie posuere dui, in imperdiet lectus facilisis sit amet. Morbi vitae mattis enim.
 
-            Praesent luctus, velit nec maximus viverra, lacus lacus sagittis mi, at varius lacus diam et magna. Aliquam suscipit elit id purus tempor, sit amet efficitur magna tristique. Morbi molestie magna mauris, vitae ultricies ipsum scelerisque sit amet. Ut pharetra sodales sapien, in mattis mi finibus non. Sed ornare nisl metus. Maecenas luctus lobortis urna ac porttitor. Cras ante ligula, molestie vel sem a, condimentum congue est. In vehicula neque iaculis commodo sollicitudin. Fusce volutpat volutpat diam sed ullamcorper.
-
-        </p>
-        <p>
-            Ut fringilla nisi non libero varius tincidunt. Sed semper neque et metus tincidunt elementum. Duis pharetra ipsum sodales scelerisque fringilla. Donec semper elit vitae elit viverra, sit amet suscipit ex iaculis. Suspendisse mattis bibendum urna, quis bibendum nunc aliquet et. Quisque at enim ac nunc sollicitudin interdum. Nunc in risus ornare, consequat nunc eu, lobortis nunc. Sed dignissim scelerisque tristique. Aliquam iaculis ligula ut quam egestas convallis. Aenean pretium justo et nulla malesuada, id vulputate enim scelerisque.
-
-            Quisque sollicitudin metus et ipsum feugiat pretium. Nulla facilisi. Proin cursus eros a luctus convallis. Curabitur ullamcorper neque a sem scelerisque ornare. Integer vitae semper ex, id consequat neque. Nullam eu nisi eu risus varius hendrerit. Donec metus arcu, ullamcorper eget fringilla porta, rutrum sed sapien. Fusce ornare tempor enim, vel tincidunt tellus lobortis at. Ut hendrerit ex ac ex maximus, nec tristique nunc elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer nec sollicitudin leo. Phasellus quis velit et mi sagittis sollicitudin. Praesent at laoreet odio, vel tristique arcu. Aenean aliquam enim eget nulla vulputate cursus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
-            Integer sed interdum dui, ac tincidunt turpis. Morbi semper tellus nec elit vehicula, at bibendum lacus sodales. Phasellus quis lorem sollicitudin, hendrerit turpis at, auctor turpis. Mauris malesuada sem et leo dictum ornare. Nullam eget massa pharetra, scelerisque ligula a, pulvinar nisl. Ut pellentesque egestas velit ut ornare. Phasellus at neque in augue varius tincidunt. Fusce auctor sed nibh eget facilisis. Praesent vestibulum, neque et gravida mollis, turpis felis imperdiet elit, id tempor lacus augue ac sapien. Integer volutpat erat at lectus gravida vulputate.
-
-            Sed facilisis tempor risus, nec posuere dui consectetur quis. Etiam pellentesque dui ac dui feugiat, vitae ullamcorper risus porta. Nam ultricies erat ex, et dapibus nisl maximus nec. Donec tempus dolor eu diam scelerisque, sed gravida justo suscipit. Aliquam arcu ex, interdum eu lectus nec, feugiat volutpat ligula. Phasellus vestibulum semper lacus eget vestibulum. Aenean mollis elit quis malesuada cursus. Pellentesque sagittis mi ac nulla egestas, quis ornare tortor condimentum. Aenean tristique ultrices sem sed dictum. Sed efficitur enim ligula, eget semper quam varius a. Ut pellentesque nisi ante, sed iaculis leo pellentesque eu. Vivamus sed aliquet tellus. Duis fermentum justo gravida, mollis nisi non, imperdiet orci. In at ex leo.
-
-            Nulla consectetur ultricies justo, eu fermentum tortor ultrices id. Morbi luctus sed mauris nec feugiat. Mauris a libero tortor. Fusce tempus maximus tellus, sit amet tincidunt neque suscipit vel. Sed eget laoreet dui. Ut vitae varius lacus, laoreet accumsan neque. Nam et ligula nec velit euismod viverra. Nam a eros arcu. Praesent aliquet turpis scelerisque, posuere mauris a, commodo tortor. Donec vitae tortor vel mauris ultricies congue non non tortor. Mauris porttitor sem id odio imperdiet, non rhoncus sapien tincidunt. Donec molestie tempor faucibus. Aenean porttitor interdum fermentum. Sed mattis mauris ut diam posuere suscipit.
-
-            Suspendisse vitae varius ante. Maecenas sapien orci, porttitor pretium lorem ut, mattis feugiat dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce a elit ut lectus congue molestie. Aenean accumsan, leo sit amet fringilla tincidunt, nulla turpis semper urna, a rhoncus ante lorem quis felis. Donec a quam at ante facilisis bibendum. Duis id lacus sem. Proin non nulla lacus. Morbi sit amet odio dignissim, dictum nulla sit amet, pharetra nibh. Cras finibus laoreet urna, malesuada egestas ipsum malesuada id.
-
-            Integer bibendum convallis felis vitae gravida. Maecenas sagittis rhoncus mauris, et ullamcorper ex venenatis ac. In feugiat erat augue, quis volutpat nulla sagittis vulputate. Phasellus vel ex sed mi auctor mattis eu vel ipsum. Mauris at ante non urna finibus auctor. Duis maximus augue at tellus ultrices, ut commodo ipsum dictum. Suspendisse nec magna vitae nibh lacinia luctus. Aliquam eu tortor ultrices, pellentesque est nec, sodales felis.
-        </p>
+}
+else if (Model.Courses.Count() == 0)
+{
+    <div>
+        <p class="text-body form-group">You currently have no courses. Select a course and enroll.</p>
     </div>
-
-</div>
-
-
+}

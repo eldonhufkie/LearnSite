@@ -36,11 +36,11 @@ namespace LearnSite.Controllers
             }
             var UserCourse = new UserCourseViewModel
             {
-                Courses = (IEnumerable<Course>)context.Courses.SingleOrDefaultAsync(),
+                Courses = context.Courses.ToList(),
                 UserObj = context.Users.FirstOrDefault(u => u.Id == userId)
             };
-            var model = UserCourse.Courses;
-            return View(model);
+            
+            return View(UserCourse);
         }
         //
         // GET: Course/Details/5
@@ -55,8 +55,13 @@ namespace LearnSite.Controllers
                     userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                     if (context.Courses.Count() < 1)
                     {
-                        var course = context.Courses.FirstOrDefault(x => x.Id == id);
-                        return View(course);
+                        //var course = context.Courses.FirstOrDefault(x => x.Id == id);
+                        var UserCourse = new UserCourseViewModel
+                        {
+                            Courses = context.Courses.ToList(),
+                            UserObj = context.Users.FirstOrDefault(u => u.Id == userId)
+                        };
+                        return View(UserCourse);
                     }
                     else
                     {
@@ -73,8 +78,13 @@ namespace LearnSite.Controllers
             }
             else
             {
-                var course = context.Courses.FirstOrDefault(x => x.Id == id);
-                return View(course);
+                var UserCourse = new UserCourseViewModel
+                {
+                    Courses = context.Courses.ToList()
+                };
+                return View(UserCourse);
+                //var course = context.Courses.FirstOrDefault(x => x.Id == id);
+                //return View(course);
             }
             return View();
         }

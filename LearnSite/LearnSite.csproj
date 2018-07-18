@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-LearnSite-B1C983D0-10D0-4DCE-9D47-977EF8A8BBC4</UserSecretsId>
+    <TypeScriptToolsVersion>2.9</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,8 @@
     <Compile Remove="Migrations\20180616183851_AddUserProperties.Designer.cs" />
     <Compile Remove="Migrations\20180617131945_AddUserProperties.cs" />
     <Compile Remove="Migrations\20180617131945_AddUserProperties.Designer.cs" />
+    <Compile Remove="Migrations\20180717110109_AddImagesToDb.cs" />
+    <Compile Remove="Migrations\20180717110109_AddImagesToDb.Designer.cs" />
   </ItemGroup>
 
 

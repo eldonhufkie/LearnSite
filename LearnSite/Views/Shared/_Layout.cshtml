@@ -5,7 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Learn Site</title>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
 
+    <script src="/node_modules/zone.js/dist/zone.js"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="/systemjs.config.js"></script>
+    <script>
+        System.import('app/main.js').catch(function (err) { console.error(err); });
+    </script>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -33,13 +42,16 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Course" asp-action="Index">Courses</a></li>
-                    @if (User.IsInRole(SD.AdminEndUser))
-                    {
-                        <li><a asp-area="" asp-controller="Course" asp-action="Index">Add New Course</a></li>
-                    }
+
                     @*  <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 </ul>
+
                 @await Html.PartialAsync("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a asp-controller="Course" asp-action="MyCourses">My Courses</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

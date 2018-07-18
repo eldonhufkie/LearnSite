@@ -11,9 +11,10 @@ using System;
 namespace LearnSite.Migrations
 {
     [DbContext(typeof(LearnContext))]
-    partial class LearnContextModelSnapshot : ModelSnapshot
+    [Migration("20180717110255_AddImagesToDb")]
+    partial class AddImagesToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,8 +157,6 @@ namespace LearnSite.Migrations
                     b.Property<string>("SectionDescription");
 
                     b.Property<string>("SectionName");
-
-                    b.Property<int>("SectionNumber");
 
                     b.HasKey("Id");
 

@@ -16,6 +16,7 @@ namespace LearnSite.Models
         public string UserId { get; set; }
         //instructor
         public ICollection<Section> Sections { get; set; }
+        public byte[] ImageData { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }

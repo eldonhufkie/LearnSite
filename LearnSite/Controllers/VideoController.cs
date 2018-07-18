@@ -32,7 +32,7 @@ namespace LearnSite.Controllers
         {
             var SecVids = new SectionVideoViewModel
             {
-                Sections = context.Sections.Include(x=>x.Videos).OrderBy(x=>x.Id).Where(s=>s.Id==sectionId),
+                Sections = context.Sections.Include(x=>x.Videos).OrderBy(x=>x.Id),
                 Videos = context.Videos.FirstOrDefault(v => v.Id == id)
             };
 
