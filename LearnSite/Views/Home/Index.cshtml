@@ -1,7 +1,8 @@
 ﻿@model LearnSite.ViewModels.UserCourseViewModel
 @{
     ViewData["Title"] = "Home Page";
-}<br />
+}
+<br/>
 
 <div class="col-lg-12">
     <section class="box ">
@@ -15,12 +16,14 @@
                                 <img class="card-img-top img-responsive" src="https://cdn.journaldev.com/wp-content/uploads/2017/04/python-tutorial.png" alt="Card image cap">
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title "><small>@item.CourseName</small></h1>
+                                <h1 class="card-title ">
+                                    <small>@item.CourseName</small>
+                                </h1>
                                 @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
                                 @using (Html.BeginForm("Details", "Course", FormMethod.Get))
                                 {
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <input type="submit" class="btn btn-block" value="Click Here" />
+                                    <input type="hidden" name="id" value="@item.Id"/>
+                                    <input type="submit" class="btn btn-block" value="Click Here"/>
                                 }
                             </div>
                         </div>

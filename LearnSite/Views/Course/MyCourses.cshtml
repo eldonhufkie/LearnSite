@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LearnSite.Models.Course>
+﻿@model LearnSite.ViewModels.MyCoursesViewModel
 
 @{
     ViewData["Title"] = "My Courses";
@@ -6,22 +6,24 @@
 }
 
 <h2>My Courses</h2>
-<br />
-@if (Model.Count() > 0)
+<br/>
+@if (Model.Courses.Count() > 0)
 {
-    foreach (var item in Model)
+    foreach (var item in Model.Courses)
     {
         <div class="card" style="width: 25rem;">
             <div class="img-responsive">
                 <img class="card-img-top img-responsive" src="https://cdn.journaldev.com/wp-content/uploads/2017/04/python-tutorial.png" alt="Card image cap">
             </div>
             <div class="card-body">
-                <h1 class="card-title "><small>@item.CourseName</small></h1>
+                <h1 class="card-title ">
+                    <small>@item.Courses.CourseName</small>
+                </h1>
                 @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
                 @using (Html.BeginForm("Details", "Course", FormMethod.Get))
                 {
-                    <input type="hidden" name="id" value="@item.Id" />
-                    <input type="submit" class="btn btn-block" value="Click Here" />
+                    <input type="hidden" name="id" value="@item.Courses.Id"/>
+                    <input type="submit" class="btn btn-block" value="Click Here"/>
                 }
 
 
@@ -29,7 +31,7 @@
         </div>
     }
 }
-else if (Model.Count() == 0)
+else if (Model.Courses.Count() == 0)
 {
     <div>
         <p class="text-body form-group">There are currently no courses.</p>

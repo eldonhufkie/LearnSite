@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using LearnSite.Models;
-using LearnSite.Context;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Threading.Tasks;
+using LearnSite.Context;
+using LearnSite.Models;
 using LearnSite.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LearnSite.Controllers
 {
@@ -20,12 +17,10 @@ namespace LearnSite.Controllers
         {
             context = _context;
         }
+
         public async Task<IActionResult> Index(string userId = null)
         {
-            if (userId == null)
-            {
-                userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            }
+            if (userId == null) userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var UserCourse = new UserCourseViewModel
             {
                 Courses = context.Courses.ToList(),
@@ -36,7 +31,7 @@ namespace LearnSite.Controllers
 
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
     }
 }

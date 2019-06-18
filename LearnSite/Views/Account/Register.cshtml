@@ -1,5 +1,5 @@
-﻿@model RegisterViewModel
-@using LearnSite.Ulitity
+﻿@using LearnSite.Ulitity
+@model RegisterViewModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -15,7 +15,7 @@
                     <label asp-for="FirstName" class="custom-control-label"></label>
                 </div>
                 <div class="col-sm-4">
-                    <input asp-for="FirstName" class="form-control" />
+                    <input asp-for="FirstName" class="form-control"/>
                 </div>
             </div>
             <span asp-validation-for="FirstName" class="text-danger"></span>
@@ -26,7 +26,7 @@
                     <label asp-for="LastName" class="custom-control-label"></label>
                 </div>
                 <div class="col-sm-4">
-                    <input asp-for="LastName" class="form-control" />
+                    <input asp-for="LastName" class="form-control"/>
                 </div>
             </div>
             <span asp-validation-for="LastName" class="text-danger"></span>
@@ -37,37 +37,40 @@
                     <label asp-for="Gender" class="custom-control-label"></label>
                 </div>
                 <div class="col-sm-4">
-                    <input asp-for="Gender" class="form-control" />
+                    <input asp-for="Gender" class="form-control"/>
                 </div>
             </div>
             <span asp-validation-for="Gender" class="text-danger"></span>
-        </div> <div class="form-group">
+        </div>
+        <div class="form-group">
             <div class="row">
                 <div class="col-sm-2">
                     <label asp-for="Email" class="custom-control-label"></label>
                 </div>
                 <div class="col-sm-4">
-                    <input asp-for="Email" class="form-control" />
+                    <input asp-for="Email" class="form-control"/>
                 </div>
             </div>
             <span asp-validation-for="Email" class="text-danger"></span>
-        </div> <div class="form-group">
+        </div>
+        <div class="form-group">
             <div class="row">
                 <div class="col-sm-2">
                     <label asp-for="Password" class="custom-control-label"></label>
                 </div>
                 <div class="col-sm-4">
-                    <input asp-for="Password" class="form-control" />
+                    <input asp-for="Password" class="form-control"/>
                 </div>
             </div>
             <span asp-validation-for="Password" class="text-danger"></span>
-        </div> <div class="form-group">
+        </div>
+        <div class="form-group">
             <div class="row">
                 <div class="col-sm-2">
                     <label asp-for="ConfirmPassword" class="custom-control-label"></label>
                 </div>
                 <div class="col-sm-4">
-                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <input asp-for="ConfirmPassword" class="form-control"/>
                 </div>
             </div>
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
@@ -80,10 +83,10 @@
                         <label asp-for="isAdmin" class="custom-control-label"></label>
                     </div>
                     <div class="col-sm-4">
-                        <input asp-for="isAdmin" type="checkbox" class="checkbox form-control" />
+                        <input asp-for="isAdmin" type="checkbox" class="checkbox form-control"/>
                     </div>
                 </div>
-               @* <span asp-validation-for="ConfirmPassword" class="text-danger"></span>*@
+                @* <span asp-validation-for="ConfirmPassword" class="text-danger"></span>*@
             </div>
         }
         <div class="form-group">

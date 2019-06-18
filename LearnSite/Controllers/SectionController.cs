@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using LearnSite.Context;
-using LearnSite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,31 +12,33 @@ namespace LearnSite.Controllers
 
         public SectionController(LearnContext _context)
         {
-
             context = _context;
         }
+
         // GET: Section
         public async Task<IActionResult> Index()
         {
             var section = context.Sections
-               .Include(c => c.Videos);
+                .Include(c => c.Videos);
             return View(await section.ToListAsync());
         }
+
         [HttpGet]
         public async Task<IActionResult> GetVideo(int id)
         {
             var ad = context.Videos.Find(id);
             return View(ad);
         }
+
         [HttpPost]
         public async Task<IActionResult> Index(int id)
         {
             var ad = context.Videos.Find(id);
             return View(ad);
         }
+
         public async Task<IActionResult> GetVideoList()
         {
-
             return View();
         }
 

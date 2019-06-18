@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace LearnSite.Data.Migrations
 {
@@ -9,36 +7,36 @@ namespace LearnSite.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers");
+                "UserNameIndex",
+                "AspNetUsers");
 
             migrationBuilder.DropIndex(
-                name: "IX_AspNetUserRoles_UserId",
-                table: "AspNetUserRoles");
+                "IX_AspNetUserRoles_UserId",
+                "AspNetUserRoles");
 
             migrationBuilder.DropIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles");
+                "RoleNameIndex",
+                "AspNetRoles");
 
             migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
+                "UserNameIndex",
+                "AspNetUsers",
+                "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles",
-                column: "NormalizedName",
+                "RoleNameIndex",
+                "AspNetRoles",
+                "NormalizedName",
                 unique: true,
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                table: "AspNetUserTokens",
-                column: "UserId",
-                principalTable: "AspNetUsers",
+                "FK_AspNetUserTokens_AspNetUsers_UserId",
+                "AspNetUserTokens",
+                "UserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -46,32 +44,32 @@ namespace LearnSite.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                table: "AspNetUserTokens");
+                "FK_AspNetUserTokens_AspNetUsers_UserId",
+                "AspNetUserTokens");
 
             migrationBuilder.DropIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers");
+                "UserNameIndex",
+                "AspNetUsers");
 
             migrationBuilder.DropIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles");
+                "RoleNameIndex",
+                "AspNetRoles");
 
             migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
+                "UserNameIndex",
+                "AspNetUsers",
+                "NormalizedUserName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_UserId",
-                table: "AspNetUserRoles",
-                column: "UserId");
+                "IX_AspNetUserRoles_UserId",
+                "AspNetUserRoles",
+                "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles",
-                column: "NormalizedName");
+                "RoleNameIndex",
+                "AspNetRoles",
+                "NormalizedName");
         }
     }
 }

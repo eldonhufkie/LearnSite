@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace LearnSite.Migrations
 {
@@ -11,29 +9,28 @@ namespace LearnSite.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "SectionId",
-                table: "Videos",
+                "SectionId",
+                "Videos",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Courses",
-                columns: table => new
+                "Courses",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     CourseName = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Courses", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Courses", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Sections",
-                columns: table => new
+                "Sections",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     CourseId = table.Column<int>(nullable: true),
                     SectionDescription = table.Column<string>(nullable: true),
                     SectionName = table.Column<string>(nullable: true)
@@ -42,28 +39,28 @@ namespace LearnSite.Migrations
                 {
                     table.PrimaryKey("PK_Sections", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sections_Courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Courses",
-                        principalColumn: "Id",
+                        "FK_Sections_Courses_CourseId",
+                        x => x.CourseId,
+                        "Courses",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Videos_SectionId",
-                table: "Videos",
-                column: "SectionId");
+                "IX_Videos_SectionId",
+                "Videos",
+                "SectionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sections_CourseId",
-                table: "Sections",
-                column: "CourseId");
+                "IX_Sections_CourseId",
+                "Sections",
+                "CourseId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Videos_Sections_SectionId",
-                table: "Videos",
-                column: "SectionId",
-                principalTable: "Sections",
+                "FK_Videos_Sections_SectionId",
+                "Videos",
+                "SectionId",
+                "Sections",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -71,22 +68,22 @@ namespace LearnSite.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Videos_Sections_SectionId",
-                table: "Videos");
+                "FK_Videos_Sections_SectionId",
+                "Videos");
 
             migrationBuilder.DropTable(
-                name: "Sections");
+                "Sections");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                "Courses");
 
             migrationBuilder.DropIndex(
-                name: "IX_Videos_SectionId",
-                table: "Videos");
+                "IX_Videos_SectionId",
+                "Videos");
 
             migrationBuilder.DropColumn(
-                name: "SectionId",
-                table: "Videos");
+                "SectionId",
+                "Videos");
         }
     }
 }

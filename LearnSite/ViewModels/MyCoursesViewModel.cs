@@ -3,9 +3,9 @@ using LearnSite.Models;
 
 namespace LearnSite.ViewModels
 {
-    public class UserCourseViewModel
+    public class MyCoursesViewModel
     {
         public ApplicationUser UserObj { get; set; }
-        public IEnumerable<Course> Courses { get; set; }
+        public IEnumerable<MyCourse> Courses { get; set; }
     }
 }

@@ -1,5 +1,3 @@
-@using Microsoft.AspNetCore.Identity
-@using LearnSite.Models
 @using LearnSite.Ulitity
 @*@model LearnSite.ViewModels.UserCourseViewModel*@
 @inject SignInManager<ApplicationUser> SignInManager
@@ -35,7 +33,9 @@
                     </li>
                     @if (User.IsInRole(SD.AdminEndUser))
                     {
-                        <li><a asp-area="" asp-controller="Course" asp-action="Create">Create New Course</a></li>
+                        <li>
+                            <a asp-area="" asp-controller="Course" asp-action="Create">Create New Course</a>
+                        </li>
                     }
                     <li>
                         <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
@@ -50,6 +50,8 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="" class="nav-link" asp-controller="Account" asp-action="Login">Log in</a></li>
+        <li>
+            <a asp-area="" class="nav-link" asp-controller="Account" asp-action="Login">Log in</a>
+        </li>
     </ul>
 }

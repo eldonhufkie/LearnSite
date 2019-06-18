@@ -1,6 +1,4 @@
-﻿@model IEnumerable<LearnSite.Models.Section>
-@using Microsoft.AspNetCore.Identity
-@using LearnSite.Models
+﻿@model IEnumerable<Section>
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -19,21 +17,22 @@
     </p>
 }
 
-    <div class="row">
-        @foreach (var item in Model)
-        {
+<div class="row">
+    @foreach (var item in Model)
+    {
         <div class="col-md-8">
             <h3>@item.Videos.FirstOrDefault().VideoName</h3>
         </div>
-        }
-    </div>
+    }
+</div>
 <div class="row">
 
     <div class="col-md-8">
         @foreach (var item in Model)
         {
             <iframe width="600" height="450" id="video"
-                    src="https://www.youtube.com/embed/@item.Videos.FirstOrDefault().VideoUrl"></iframe>
+                    src="https://www.youtube.com/embed/@item.Videos.FirstOrDefault().VideoUrl">
+            </iframe>
         }
 
     </div>
@@ -50,7 +49,7 @@
                     @foreach (var vids in item.Videos)
                     {
                         <div class="card card-body">
-                            <input type="submit" id="@vids.Id" value="@vids.VideoName" class="btn btn-block" asp-action="GetActionSection" />
+                            <input type="submit" id="@vids.Id" value="@vids.VideoName" class="btn btn-block" asp-action="GetActionSection"/>
                         </div>
                     }
                 </div>
@@ -68,4 +67,4 @@
         }
     }
 </div>
-<br />
+<br/>

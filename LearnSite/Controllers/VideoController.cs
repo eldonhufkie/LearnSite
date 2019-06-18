@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using LearnSite.Context;
-using LearnSite.Models;
 using LearnSite.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,8 +24,9 @@ namespace LearnSite.Controllers
                 .Include(c => c.Videos);
             return View(await section.ToListAsync());
         }
+
         [HttpGet]
-        public IActionResult Index(int id,int sectionId)
+        public IActionResult Index(int id, int sectionId)
         {
             var sections = context.Sections.Include(x => x.Videos).OrderBy(x => x.Id).Where(s => s.Id == sectionId);
             var SecVids = new SectionVideoViewModel
@@ -39,34 +37,40 @@ namespace LearnSite.Controllers
 
             return View(SecVids);
         }
+
         //Get all Videos
         public IActionResult GetAllVideos()
         {
-            List<Video> data = context.Videos.ToList();
+            var data = context.Videos.ToList();
             return new JsonResult(data);
         }
+
         // GET: Video/Details/5
         public IActionResult GetVideoByID(int? id)
         {
-            Video data = context.Videos.Find(id);
+            var data = context.Videos.Find(id);
             return new JsonResult(data);
         }
+
         [HttpGet]
         public IActionResult GetVideoByID(int id)
         {
-            Video data = context.Videos.Find(id);
+            var data = context.Videos.Find(id);
             return View(data);
         }
+
         public IActionResult GetFirstVideo()
         {
-            Video data = context.Videos.FirstOrDefault();
+            var data = context.Videos.FirstOrDefault();
             return new JsonResult(data);
         }
+
         public async Task<IActionResult> GetCourse()
         {
             var section = context.Courses.Include(c => c.Sections).AsNoTracking();
             return View(await section.ToListAsync());
         }
+
         public async Task<IActionResult> GetSection()
         {
             var section = context.Sections.Include(c => c.Videos.First()).AsNoTracking();

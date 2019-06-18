@@ -1,4 +1,4 @@
-﻿@model LearnSite.Models.Course
+﻿@model Course
 
 @{
     ViewData["Title"] = "Create";
@@ -8,39 +8,39 @@
 <h2>Create</h2>
 
 <h4>Course</h4>
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CourseName" class="control-label"></label>
-                <input asp-for="CourseName" class="form-control" />
+                <input asp-for="CourseName" class="form-control"/>
                 <span asp-validation-for="CourseName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CourseBriefDescription" class="control-label"></label>
-                <input asp-for="CourseBriefDescription" class="form-control" />
+                <input asp-for="CourseBriefDescription" class="form-control"/>
                 <span asp-validation-for="CourseBriefDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ThingsYouWillLearn" class="control-label"></label>
-                <input asp-for="ThingsYouWillLearn" class="form-control" />
+                <input asp-for="ThingsYouWillLearn" class="form-control"/>
                 <span asp-validation-for="ThingsYouWillLearn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CourseDetailedDescription" class="control-label"></label>
-                <input asp-for="CourseDetailedDescription" class="form-control" />
+                <input asp-for="CourseDetailedDescription" class="form-control"/>
                 <span asp-validation-for="CourseDetailedDescription" class="text-danger"></span>
             </div>
-      
+
             <div class="form-group">
                 <label asp-for="ImageData" class="control-label"></label>
-                <input asp-for="ImageData" class="form-control" type="file" id="file" />
+                <input asp-for="ImageData" class="form-control" type="file" id="file"/>
                 <span asp-validation-for="ImageData" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default"/>
             </div>
         </form>
     </div>
@@ -51,5 +51,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace LearnSite.Migrations
 {
@@ -9,20 +7,20 @@ namespace LearnSite.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "UserId",
-                table: "Courses",
+                "UserId",
+                "Courses",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_UserId",
-                table: "Courses",
-                column: "UserId");
+                "IX_Courses_UserId",
+                "Courses",
+                "UserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Courses_AspNetUsers_UserId",
-                table: "Courses",
-                column: "UserId",
-                principalTable: "AspNetUsers",
+                "FK_Courses_AspNetUsers_UserId",
+                "Courses",
+                "UserId",
+                "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -30,16 +28,16 @@ namespace LearnSite.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Courses_AspNetUsers_UserId",
-                table: "Courses");
+                "FK_Courses_AspNetUsers_UserId",
+                "Courses");
 
             migrationBuilder.DropIndex(
-                name: "IX_Courses_UserId",
-                table: "Courses");
+                "IX_Courses_UserId",
+                "Courses");
 
             migrationBuilder.DropColumn(
-                name: "UserId",
-                table: "Courses");
+                "UserId",
+                "Courses");
         }
     }
 }

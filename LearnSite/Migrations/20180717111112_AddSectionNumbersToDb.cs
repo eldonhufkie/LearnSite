@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace LearnSite.Migrations
 {
@@ -9,8 +7,8 @@ namespace LearnSite.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "SectionNumber",
-                table: "Sections",
+                "SectionNumber",
+                "Sections",
                 nullable: false,
                 defaultValue: 0);
         }
@@ -18,8 +16,8 @@ namespace LearnSite.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "SectionNumber",
-                table: "Sections");
+                "SectionNumber",
+                "Sections");
         }
     }
 }

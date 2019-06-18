@@ -38,7 +38,7 @@
 //        },
 //        success: function (data) {
 //            $("#video").attr("src", "https://youtube.com/embed/" + data.videoUrl);
-             
+
 
 //        }
 //    })
@@ -101,7 +101,7 @@
 //                    '<input type="button" class="btn btn-link" onclick="playNext(\'' + url + '\' )" value="' + data[i].videos[j].videoName + '" />' +
 //                    //'<input type="button" class="btn btn-link" onclick="playNext(' + url + ' )" value="' + data[i].videos[j].videoName + '" />' +
 //                        '</div>'
-                        
+
 //                }
 //                section+='</div>';
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace LearnSite.Ulitity
+﻿namespace LearnSite.Ulitity
 {
     public class SD
     {

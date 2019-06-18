@@ -1,7 +1,4 @@
 ﻿@model LearnSite.ViewModels.UserCourseViewModel
-@using Microsoft.AspNetCore.Identity
-@using LearnSite.Models
-@using LearnSite.Ulitity
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -10,7 +7,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br />
+<br/>
 @if (SignInManager.IsSignedIn(User))
 {
     <p>
@@ -26,12 +23,14 @@
                 <img class="card-img-top img-responsive" src="https://cdn.journaldev.com/wp-content/uploads/2017/04/python-tutorial.png" alt="Card image cap">
             </div>
             <div class="card-body">
-                <h1 class="card-title "><small>@item.CourseName</small></h1>
+                <h1 class="card-title ">
+                    <small>@item.CourseName</small>
+                </h1>
                 @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
                 @using (Html.BeginForm("Details", "Course", FormMethod.Get))
                 {
-                    <input type="hidden" name="id" value="@item.Id" />
-                    <input type="submit" class="btn btn-block" value="Click Here" />
+                    <input type="hidden" name="id" value="@item.Id"/>
+                    <input type="submit" class="btn btn-block" value="Click Here"/>
                 }
 
 

@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace LearnSite.Migrations
 {
@@ -9,34 +7,34 @@ namespace LearnSite.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "CourseBriefDescription",
-                table: "Courses",
+                "CourseBriefDescription",
+                "Courses",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "CourseDetailedDescription",
-                table: "Courses",
+                "CourseDetailedDescription",
+                "Courses",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "ThingsYouWillLearn",
-                table: "Courses",
+                "ThingsYouWillLearn",
+                "Courses",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CourseBriefDescription",
-                table: "Courses");
+                "CourseBriefDescription",
+                "Courses");
 
             migrationBuilder.DropColumn(
-                name: "CourseDetailedDescription",
-                table: "Courses");
+                "CourseDetailedDescription",
+                "Courses");
 
             migrationBuilder.DropColumn(
-                name: "ThingsYouWillLearn",
-                table: "Courses");
+                "ThingsYouWillLearn",
+                "Courses");
         }
     }
 }

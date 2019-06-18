@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LearnSite.Models.Course>
+﻿@model IEnumerable<Course>
 
 @*<p>
     <a asp-action="Create">Create New</a>
@@ -13,26 +13,27 @@
 
         </div>
     </div>
-    <br />
+    <br/>
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4">
-            <input type="submit" class="btn btn-default" value="Continue to next Video" />
+            <input type="submit" class="btn btn-default" value="Continue to next Video"/>
         </div>
     </div>
 
 </div>
 <table class="table">
     <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CourseName)
-                </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CourseName)
@@ -43,6 +44,6 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>*@
         </tr>
-}
+    }
     </tbody>
 </table>

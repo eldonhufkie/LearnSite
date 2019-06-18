@@ -1,4 +1,4 @@
-﻿@model LearnSite.Models.Video
+﻿@model Video
 
 @{
     ViewData["Title"] = "Details";
@@ -9,7 +9,7 @@
 
 <div>
     <h4>Video</h4>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.VideoName)
@@ -47,8 +47,8 @@
                         <div class="card-body">
                             @using (Html.BeginForm("Index", "Home", FormMethod.Post))
                             {
-                                <input type="submit" id="btnUrl" value="Next Video" class="btn btn-default" />
-                                <input type="hidden" id="video" name="video" value="https://www.youtube.com/embed/HtggWqmekmY?rel=0" />
+                                <input type="submit" id="btnUrl" value="Next Video" class="btn btn-default"/>
+                                <input type="hidden" id="video" name="video" value="https://www.youtube.com/embed/HtggWqmekmY?rel=0"/>
                             }
                         </div>
                     </div>

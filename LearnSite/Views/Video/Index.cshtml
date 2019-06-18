@@ -1,7 +1,4 @@
 ﻿@model LearnSite.ViewModels.SectionVideoViewModel
-@using Microsoft.AspNetCore.Identity
-@using LearnSite.Models
-@using LearnSite.Ulitity
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -49,9 +46,9 @@
                         <div class="card card-body">
                             @using (Html.BeginForm("Index", "Video", FormMethod.Get))
                             {
-                                <input type="hidden" value="@vids.Id" id="id" name="id" />
-                                <input type="hidden" value="@item.Id" id="id" name="sectionId" />
-                                <input type="submit" class="btn btn-block" value="@vids.VideoName" />
+                                <input type="hidden" value="@vids.Id" id="id" name="id"/>
+                                <input type="hidden" value="@item.Id" id="id" name="sectionId"/>
+                                <input type="submit" class="btn btn-block" value="@vids.VideoName"/>
                             }
                         </div>
                     }
@@ -62,9 +59,10 @@
 </div>
 <div class="row">
     <div class="col-md-8">
-        <div class="h1"><small>Video Description</small></div>
+        <div class="h1">
+            <small>Video Description</small>
+        </div>
         <p class="h4">@Model.Videos.VideoDescription</p>
 
     </div>
 </div>
-

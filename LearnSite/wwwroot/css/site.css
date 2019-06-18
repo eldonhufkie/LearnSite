@@ -1,80 +1,81 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    padding-top: 50px;
 }
 
 /* Wrapping element */
+
 /* Set some basic padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
 /* Carousel */
+
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
+
+.carousel-inner .item img[src$=".svg"] { width: 100%; }
 
 /* QR code generator */
-#qrCode {
-    margin: 15px;
-}
+
+#qrCode { margin: 15px; }
 
 #Thejumbotron {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-    color: inherit;
     background-color: #eee;
+    color: inherit;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
 
 .accordion {
     background-color: #eee;
+    border: none;
     color: #444;
     cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
     font-size: 15px;
+    outline: none;
+    padding: 18px;
+    text-align: left;
     transition: 0.4s;
+    width: 100%;
 }
 
-    .active, .accordion:hover {
-        background-color: #ccc;
-    }
+.active, .accordion:hover { background-color: #ccc; }
 
-.card !important {
-    padding: 0 18px;
-    display: none;
+.card !
+
+important {
     background-color: white;
+    display: none;
     overflow: hidden;
+    padding: 0 18px;
 }
 
-.card-body !important {
-    padding: 0 18px;
-    display: none;
+.card-body !
+
+important {
     background-color: white;
+    display: none;
     overflow: hidden;
+    padding: 0 18px;
     transition: max-height 0.2s ease-out;
 }
 
 .resp-container {
-    position: relative;
     overflow: hidden;
     padding-top: 56.25%;
+    position: relative;
 }
 
-.card > a {
-    color: black;
-}
+.card > a { color: black; }
 
 /*.card {
     border: solid #808080;
@@ -85,10 +86,10 @@
     position: sticky !important;
     top: 50px !important;
 }
+
 /* Hide/rearrange for smaller screens */
+
 @media screen and (max-width: 767px) {
     /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+    .carousel-caption { display: none; }
 }

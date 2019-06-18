@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace LearnSite.Migrations
 {
@@ -10,11 +9,12 @@ namespace LearnSite.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "MyCourses",
-                columns: table => new
+                "MyCourses",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     CourseID = table.Column<int>(nullable: false),
                     EnrolledDate = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<string>(nullable: true)
@@ -23,34 +23,34 @@ namespace LearnSite.Migrations
                 {
                     table.PrimaryKey("PK_MyCourses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MyCourses_Courses_CourseID",
-                        column: x => x.CourseID,
-                        principalTable: "Courses",
-                        principalColumn: "Id",
+                        "FK_MyCourses_Courses_CourseID",
+                        x => x.CourseID,
+                        "Courses",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MyCourses_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_MyCourses_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MyCourses_CourseID",
-                table: "MyCourses",
-                column: "CourseID");
+                "IX_MyCourses_CourseID",
+                "MyCourses",
+                "CourseID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MyCourses_UserId",
-                table: "MyCourses",
-                column: "UserId");
+                "IX_MyCourses_UserId",
+                "MyCourses",
+                "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MyCourses");
+                "MyCourses");
         }
     }
 }
